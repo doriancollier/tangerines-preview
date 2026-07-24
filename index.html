@@ -22,6 +22,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; }
 
   html { scroll-behavior: smooth; }
 
@@ -152,6 +153,8 @@
     max-width: none;
     padding-left: 0; padding-right: 0;
   }
+  .section-tinted { background: var(--bg2); max-width: none; }
+  .section-flush-top { padding-top: 0; }
 
   .section-label {
     font-size: 10px;
@@ -272,6 +275,8 @@
   .col-image img {
     width: 100%;
     display: block;
+    aspect-ratio: 1300 / 1011;
+    object-fit: cover;
     border: 1px solid var(--copper-border);
   }
   .col-image::before {
@@ -284,8 +289,10 @@
 
   /* ── FULL-BLEED IMAGE ── */
   .fullbleed {
+    position: relative;
+    left: 50%; right: 50%;
     width: 100vw;
-    margin-left: calc(50% - 50vw);
+    margin-left: -50vw; margin-right: -50vw;
     margin-top: 56px;
     margin-bottom: 4px;
   }
@@ -435,6 +442,8 @@
   .shop-image-wrap img {
     width: 100%;
     display: block;
+    aspect-ratio: 1400 / 918;
+    object-fit: cover;
     filter: brightness(0.9);
     border: 1px solid var(--copper-border);
   }
@@ -600,6 +609,8 @@
   .cta-section h2, .cta-section p { margin-left: auto; margin-right: auto; }
   .cta-email {
     display: inline-block;
+    max-width: 100%;
+    word-break: break-word;
     margin-top: 40px;
     padding: 18px 48px;
     border: 1px solid var(--copper);
@@ -663,19 +674,57 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    section { padding: 70px 24px; }
-    .hero-content { padding: 0 24px 60px; }
+    nav { padding: 14px 20px; }
+    .nav-logo { font-size: 16px; }
+    .nav-tag { font-size: 9px; letter-spacing: 0.08em; }
+    section { padding: 64px 22px; }
+    .statement { padding: 60px 22px; }
+    .cta-section { padding: 88px 22px 80px; }
+    .hero-content { padding: 0 22px 56px; }
+    h1 { font-size: clamp(40px, 11vw, 56px); }
+    .hero-sub { font-size: 16px; }
+    .hero-meta { gap: 22px; flex-wrap: wrap; }
     .two-col { grid-template-columns: 1fr; gap: 40px; }
     .two-col.reverse { direction: ltr; }
     .figure-row { grid-template-columns: 1fr; }
     .specs, .specs.specs-3 { grid-template-columns: 1fr; }
     .release-details { grid-template-columns: 1fr; gap: 24px; }
-    .cycle-grid { grid-template-columns: 1fr 1fr; }
+    .cycle-grid { grid-template-columns: 1fr !important; }
     .twin-visual { flex-direction: column; }
     .twin-connector { width: 100%; height: 40px; }
-    .release-block { padding: 36px 24px; }
+    .twin-connector::before, .twin-connector::after { display: none; }
+    .twin-side { padding: 32px 24px; }
+    .release-block { padding: 34px 22px; }
+    .finish-layer { flex-direction: column; align-items: flex-start; gap: 6px; padding: 18px 22px; }
+    .finish-num { min-width: 0; }
+    .finish-name { min-width: 0; }
+    .fullbleed img { max-height: 62vh; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 12px 16px; }
+    .nav-tag { font-size: 8px; letter-spacing: 0.06em; }
+    section { padding: 54px 18px; }
+    .statement { padding: 50px 18px; }
+    .cta-section { padding: 76px 18px 68px; }
+    .hero-content { padding: 0 20px 46px; }
+    h1 { font-size: 38px; }
+    h2 { font-size: 28px; }
+    .hero-sub { font-size: 15px; }
+    .hero-meta { gap: 16px; }
+    .hero-stat-value { font-size: 23px; }
+    .statement blockquote { font-size: 20px; padding-left: 18px; }
+    .release-title { font-size: 30px; }
+    .twin-side { padding: 24px 20px; }
+    .cta-email { padding: 16px 32px; letter-spacing: 0.15em; }
+  }
+
+  @media (max-width: 360px) {
+    .nav-logo { font-size: 15px; letter-spacing: 0.07em; }
+    .nav-tag { font-size: 7px; letter-spacing: 0.04em; }
+    .cta-email { padding: 14px 18px; font-size: 12px; letter-spacing: 0.08em; }
+    h1 { font-size: 34px; }
   }
 </style>
 </head>
@@ -835,7 +884,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════ GENERATIVE SYSTEM -->
-<section style="background: var(--bg2); max-width: none; padding: 100px 60px;">
+<section class="section-tinted">
   <div style="max-width: 1100px; margin: 0 auto;">
     <div class="section-label"><span>004</span> The System</div>
     <div class="two-col">
@@ -995,7 +1044,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════ THE CRAFT -->
-<section style="background: var(--bg2); max-width: none; padding: 100px 60px;">
+<section class="section-tinted">
   <div style="max-width: 1100px; margin: 0 auto;">
     <div class="section-label"><span>007</span> The Craft · Hand Finishing</div>
     <div class="two-col">
@@ -1113,7 +1162,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════ THE RELEASE -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 0 60px 100px;">
+<section class="section-flush-top">
   <div class="section-label"><span>010</span> The Release</div>
   <div class="release-block">
     <div class="release-kicker">Art Blocks Studio Release</div>
