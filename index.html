@@ -647,6 +647,7 @@
     .figure-row { grid-template-columns: 1fr; }
     .specs { grid-template-columns: 1fr; }
     .release-details { grid-template-columns: 1fr; gap: 24px; }
+    .cycle-grid { grid-template-columns: 1fr 1fr; }
     .twin-visual { flex-direction: column; }
     .twin-connector { width: 100%; height: 40px; }
     .release-block { padding: 36px 24px; }
@@ -843,9 +844,90 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════ THE ACQUISITION -->
+<section>
+  <div class="section-label"><span>005</span> The Acquisition</div>
+  <div class="two-col">
+    <div>
+      <h2>Three are always<br><em>waiting.</em></h2>
+      <p>Most generative art asks you to buy blind — you mint a mystery, then discover what you own. Tangerines refuses that bargain. At every moment, <strong>exactly three figures stand available, fully revealed.</strong> Every trait, every color, every detail — seen before you commit. You don't gamble on a reveal. You <em>choose</em>.</p>
+      <p>And what you choose is already becoming real. The moment a figure is <strong>birthed</strong>, it is revealed and set into fabrication in the same breath — so each of the three on offer is not a render waiting for a buyer. It is a piece already being made.</p>
+      <p>Claim one, and the algorithm births its successor: a new character brought into being, revealed into the open place, entering production the instant it exists. The three never empty. You always know exactly what you're taking home — but what waits <em>beyond</em> the three is unwritten. No roadmap. No preview. It does not exist until the algorithm brings it into being.</p>
+    </div>
+    <div>
+      <div style="background: var(--bg3); border: 1px solid var(--copper-border); padding: 28px;">
+        <div class="section-label" style="margin-bottom: 22px;">The Standing Three</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: var(--bg2); border: 1px solid var(--copper-border);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #C8893A, #E8A84C); flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: var(--text); font-weight: 500;">Figure 001 — revealed</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Every trait visible · already in the making</div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: var(--copper); border: 1px solid var(--copper-border); padding: 4px 8px;">AVAILABLE</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: var(--bg2); border: 1px solid var(--copper-border);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #3f6f66, #6fb3a4); flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: var(--text); font-weight: 500;">Figure 002 — revealed</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Every trait visible · already in the making</div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: var(--copper); border: 1px solid var(--copper-border); padding: 4px 8px;">AVAILABLE</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: var(--bg2); border: 1px solid var(--copper-border);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #5a3d82, #8a5fc4); flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: var(--text); font-weight: 500;">Figure 003 — revealed</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Every trait visible · already in the making</div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: var(--copper); border: 1px solid var(--copper-border); padding: 4px 8px;">AVAILABLE</div>
+          </div>
+          <div style="height: 1px; background: var(--copper-border); margin: 6px 2px;"></div>
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: var(--bg); border: 1px dashed var(--copper-border);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #141210; border: 1px dashed var(--copper-border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-family: var(--serif); font-style: italic; font-size: 18px;">?</div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: var(--text-dim); font-weight: 500;">The next — unborn</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Births the instant one is claimed</div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: var(--text-muted); border: 1px dashed var(--copper-border); padding: 4px 8px;">SEALED</div>
+          </div>
+        </div>
+        <p style="margin-top: 20px; font-size: 12px; color: var(--text-muted); max-width: none;">You choose from what you can see. The mystery lives in what comes next.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- the cycle -->
+  <div style="margin-top: 64px;">
+    <div class="section-label" style="margin-bottom: 24px;">The Cycle</div>
+    <div class="cycle-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--copper-border); border: 1px solid var(--copper-border);">
+      <div style="background: var(--bg2); padding: 28px 24px;">
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--copper); margin-bottom: 14px;">01</div>
+        <div style="font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-bottom: 8px;">Birthed</div>
+        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">The algorithm brings a new character into being — revealed to the world and set into fabrication in the same moment.</div>
+      </div>
+      <div style="background: var(--bg2); padding: 28px 24px;">
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--copper); margin-bottom: 14px;">02</div>
+        <div style="font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-bottom: 8px;">Standing</div>
+        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">It takes its place among the three. Every figure on offer is fully seen — and already becoming a physical object.</div>
+      </div>
+      <div style="background: var(--bg2); padding: 28px 24px;">
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--copper); margin-bottom: 14px;">03</div>
+        <div style="font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-bottom: 8px;">Chosen</div>
+        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">A collector selects from the three — knowing exactly the piece they are taking home. No blind mint, no surprise.</div>
+      </div>
+      <div style="background: var(--bg2); padding: 28px 24px;">
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--copper); margin-bottom: 14px;">04</div>
+        <div style="font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-bottom: 8px;">Continued</div>
+        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">The claimed figure departs; the algorithm births its successor into the open place. The three never empty.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════════════════════════════ THE PROCESS -->
 <section>
-  <div class="section-label"><span>005</span> Behind the Build — The Pipeline</div>
+  <div class="section-label"><span>006</span> Behind the Build — The Pipeline</div>
   <div class="two-col">
     <div>
       <h2>From <em>image</em><br>to object.</h2>
@@ -907,7 +989,7 @@
 <!-- ══════════════════════════════════════════ THE CRAFT -->
 <section style="background: var(--bg2); max-width: none; padding: 100px 60px;">
   <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label"><span>006</span> The Craft — Hand Finishing</div>
+    <div class="section-label"><span>007</span> The Craft — Hand Finishing</div>
     <div class="two-col">
       <div>
         <h2>The machine<br>builds it. The<br>artist <em>finishes it.</em></h2>
@@ -966,7 +1048,7 @@
 
 <!-- ══════════════════════════════════════════ DIGITAL TWIN -->
 <section>
-  <div class="section-label"><span>007</span> The Digital Twin</div>
+  <div class="section-label"><span>008</span> The Digital Twin</div>
   <h2>The object and<br>the token are <em>one thing.</em></h2>
   <p class="wide">The physical figure and the on-chain token are designed, from the first sketch, as a single artifact. An NFC chip embedded in the figure bridges them: tap the figure, the token answers. The blockchain record holds the provenance. The figure holds the body. Neither is complete without the other.</p>
   <div class="twin-visual">
@@ -999,7 +1081,7 @@
 
 <!-- ══════════════════════════════════════════ THE RELEASE -->
 <section style="max-width: 1100px; margin: 0 auto; padding: 0 60px 100px;">
-  <div class="section-label"><span>008</span> The Release</div>
+  <div class="section-label"><span>009</span> The Release</div>
   <div class="release-block">
     <div class="release-kicker">Art Blocks Studio Release</div>
     <div class="release-title">
