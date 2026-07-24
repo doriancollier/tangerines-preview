@@ -282,6 +282,30 @@
     pointer-events: none;
   }
 
+  /* ── FULL-BLEED IMAGE ── */
+  .fullbleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: 56px;
+    margin-bottom: 4px;
+  }
+  .fullbleed img {
+    width: 100%;
+    max-height: 760px;
+    object-fit: cover;
+    object-position: center 45%;
+    display: block;
+  }
+  .fullbleed-caption {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 18px 24px 0;
+  }
+  .specs.specs-3 { grid-template-columns: repeat(3, 1fr); }
+
   /* ── SPECS GRID ── */
   .specs {
     display: grid;
@@ -645,7 +669,7 @@
     .two-col { grid-template-columns: 1fr; gap: 40px; }
     .two-col.reverse { direction: ltr; }
     .figure-row { grid-template-columns: 1fr; }
-    .specs { grid-template-columns: 1fr; }
+    .specs, .specs.specs-3 { grid-template-columns: 1fr; }
     .release-details { grid-template-columns: 1fr; gap: 24px; }
     .cycle-grid { grid-template-columns: 1fr 1fr; }
     .twin-visual { flex-direction: column; }
@@ -669,7 +693,7 @@
   <div class="hero-content">
     <div class="hero-eyebrow">Generative Sculpture</div>
     <h1>Every piece<br>is <em>yours alone.</em></h1>
-    <p class="hero-sub">A limited run of 3D-printed figures. Each one is one of a kind, and each one is finished by hand in copper and glossy porcelain.</p>
+    <p class="hero-sub">A limited run of one-of-a-kind sculptures. Each one is printed in three dimensions, then finished by hand in copper and glossy porcelain.</p>
     <div class="hero-meta">
       <div class="hero-stat">
         <div class="hero-stat-value">15″</div>
@@ -692,7 +716,7 @@
   <div class="statement-inner">
     <div class="section-label"><span>001</span> The Premise</div>
     <blockquote>
-      "A generative algorithm builds each character. A 3D printer realizes the geometry. An artist hand-finishes the surface. An NFC chip binds the physical object to its on-chain twin. <em>You own the whole thing.</em>"
+      "A generative algorithm builds each character. A printer brings it into the world as a physical sculpture. An artist hand-finishes the surface. An NFC chip binds the physical object to its on-chain twin. <em>You own the whole thing.</em>"
     </blockquote>
   </div>
 </div>
@@ -700,12 +724,15 @@
 <!-- ══════════════════════════════════════════ THE OBJECT -->
 <section>
   <div class="section-label"><span>002</span> The Object</div>
-  <div class="two-col">
-    <div>
-      <h2>A figure that<br>commands <em>space.</em></h2>
+  <h2>A figure that commands <em>space.</em></h2>
       <p class="wide">At 15 inches tall, a Tangerine is not a desk toy. It is big enough to hold a room, and it pulls you across it.</p>
       <p class="wide">Each figure ships on a charcoal pedestal. The size is the point. The copper and porcelain finish is the first thing you notice from across the room.</p>
-      <div class="specs">
+      <div class="fullbleed">
+        <img src="images/room.jpg" alt="A 15-inch Tangerines figure on a walnut credenza in a sunlit mid-century modern room, beside a stack of art books for scale" loading="lazy">
+        <div class="fullbleed-caption">A 15-inch figure, at home. Beside a stack of art books, its scale reads at a glance.</div>
+      </div>
+
+      <div class="specs specs-3">
         <div class="spec">
           <div class="spec-label">Height</div>
           <div class="spec-value"><em>15 inches</em> / 381 mm</div>
@@ -731,9 +758,7 @@
           <div class="spec-value">NFC chip, on-chain token,<br>and a signed certificate</div>
         </div>
       </div>
-    </div>
-    <div><!-- spacer for the specs grid visual weight --></div>
-  </div>
+
 </section>
 
 <!-- ══════════════════════════════════════════ FIGURE SHOWCASE -->
@@ -955,8 +980,8 @@
     <div class="process-step">
       <div class="process-num">02</div>
       <div class="process-body">
-        <div class="process-title">Into 3D</div>
-        <div class="process-desc">The algorithm turns the drawing into a 3D figure. It builds the character piece by piece, then fits the pieces into one solid form ready to print.</div>
+        <div class="process-title">The Sculpture</div>
+        <div class="process-desc">Each drawing is sculpted into three dimensions. The algorithm shapes the character piece by piece, then brings the pieces together into a single physical form.</div>
       </div>
     </div>
     <div class="process-step">
@@ -1038,7 +1063,7 @@
     <div class="twin-side left">
       <div class="twin-side-label">Physical</div>
       <h4>The Figure</h4>
-      <p>15-inch 3D-printed sculpture, hand-finished in copper and porcelain. Sits on its pedestal. Exists in the world. Has weight, light, shadow. Can be displayed, moved, inherited.</p>
+      <p>A 15-inch sculpture, printed and then finished by hand in copper and porcelain. Sits on its pedestal. Exists in the world. Has weight, light, and shadow. Can be displayed, moved, and inherited.</p>
       <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
         <div style="font-size: 12px; color: var(--text-muted);">✦ NFC embedded</div>
         <div style="font-size: 12px; color: var(--text-muted);">✦ Generative certificate of authenticity</div>
