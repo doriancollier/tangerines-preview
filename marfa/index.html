@@ -2,179 +2,98 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tangerines · Marfa preview</title>
 <meta name="description" content="A first look at Tangerines, generative sculptures by Dorian Collier. Preview only, nothing is for sale yet. Join the list to hear first.">
-<link rel="preload" as="image" href="images/hero-copper.jpg" imagesrcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w" imagesizes="(max-width: 1100px) 100vw, 1100px">
+<meta name="theme-color" content="#F5F0E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1714" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-latin-full-normal.woff2" crossorigin>
+<link rel="preload" as="image" href="images/hero-copper.jpg" imagesrcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w" imagesizes="(max-width: 900px) 100vw, 60vw">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-  :root {
-    --copper: #C8893A;
-    --copper-bright: #E8A84C;
-    --copper-border: rgba(200, 137, 58, 0.25);
-    --bg: #080807;
-    --bg2: #0e0d0b;
-    --text: #EDE8E0;
-    --text-dim: #8A8070;
-    --serif: 'Georgia', 'Times New Roman', serif;
-    --sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  }
+  /* One screen, one action. Desktop: plate left, the ask right. Phone: plate, then the ask, form on the first screen. */
+  body { min-height: 100svh; display: flex; flex-direction: column; }
+  .m-top { display: flex; justify-content: center; padding: var(--s5) var(--gutter) 0; color: var(--text); }
+  .m-top svg { height: 30px; width: auto; display: block; }
+  .m-main { flex: 1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s8); align-items: center; max-width: var(--page-max); width: 100%; margin: 0 auto; padding: var(--s6) var(--gutter) var(--s7); }
+  .m-plate { margin: 0; }
+  .m-plate .tg-plate { aspect-ratio: 4 / 3; background: #3C3D40; }
+  .m-plate img { object-position: 50% 62%; transform: scale(1.25); transform-origin: 50% 60%; }
+  .m-ask .tg-h1 { font-size: clamp(40px, 5.4vw, 72px); margin-top: var(--s4); }
+  .m-ask .tg-lede { margin-top: var(--s4); font-size: 19px; }
+  .m-note { display: inline-flex; align-items: center; gap: 10px; margin: var(--s7) 0 var(--s3); font: 500 15px/1.3 var(--font-body); color: var(--text); }
+  .m-note::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--t-tangerine); flex: none; }
+  .m-ask .tg-small { margin-top: var(--s3); max-width: 460px; text-wrap: pretty; }
+  .m-foot { text-align: center; padding: var(--s5) var(--gutter) calc(var(--s5) + env(safe-area-inset-bottom)); }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  img { max-width: 100%; display: block; }
+  /* The waitlist form slot. The Kit embed goes inside #waitlist; these rules give
+     Kit's input and button the brand look (pill input, ink button). */
+  .m-slot { max-width: 460px; }
+  .m-slot-empty { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: var(--r-control); background: var(--surface); color: var(--text-muted); font-size: var(--fs-small); font-style: italic; }
+  #waitlist .formkit-form { max-width: none !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+  #waitlist .formkit-fields { display: flex; gap: var(--s2); margin: 0 !important; }
+  #waitlist .formkit-field { flex: 1; min-width: 0; margin: 0 !important; }
+  #waitlist .formkit-input { width: 100%; min-height: 48px; padding: 0 20px !important; border: 0 !important; border-radius: var(--r-control) !important; background: var(--surface) !important; color: var(--text) !important; font: 400 16px/1 var(--font-body) !important; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--text) 14%, transparent); }
+  #waitlist .formkit-input::placeholder { color: var(--text-muted) !important; }
+  #waitlist .formkit-input:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--focus); }
+  #waitlist .formkit-submit { flex: none; min-height: 48px; margin: 0 !important; padding: 0 26px !important; border: 0 !important; border-radius: var(--r-control) !important; background: var(--btn-bg) !important; color: var(--btn-text) !important; font: 500 16px/1 var(--font-body) !important; cursor: pointer; }
+  #waitlist .formkit-submit > span { padding: 0 !important; }
+  #waitlist .formkit-powered-by-convertkit-container { display: none !important; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  header {
-    padding: 20px 24px;
-    text-align: center;
-  }
-  .logo {
-    font-family: var(--serif);
-    font-size: 18px;
-    letter-spacing: 0.12em;
-    color: var(--copper);
-    font-style: italic;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .hero img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .hero figcaption {
-    text-wrap: balance;
-    margin-top: 10px;
-    padding: 0 16px;
-    font-size: 12px;
-    color: var(--text-dim);
-    text-align: center;
-  }
-
-  /* ── MAIN ── */
-  main {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 48px 24px 72px;
-    text-align: center;
-  }
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--copper);
-    margin-bottom: 16px;
-  }
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(36px, 8vw, 56px);
-    font-weight: 400;
-    line-height: 1.05;
-    margin-bottom: 20px;
-  }
-  h1 em { color: var(--copper-bright); font-style: italic; }
-  .lede {
-    font-size: 17px;
-    text-wrap: balance;
-    color: var(--text-dim);
-    margin-bottom: 36px;
-  }
-
-  /* One action: the list. "Preview, no sales" sits right above it. */
-  .preview-note {
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    color: var(--text-dim);
-    margin-bottom: 14px;
-  }
-  .form-slot {
-    min-height: 120px;
-    padding: 20px;
-    background: var(--bg2);
-    border: 1px solid var(--copper-border);
-  }
-  /* Placeholder until the Kit embed is pasted in. Remove with it. */
-  .form-placeholder {
-    font-size: 13px;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-  .fine {
-    margin-top: 14px;
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-
-  footer {
-    padding: 24px;
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--text-dim);
-    border-top: 1px solid var(--copper-border);
-  }
-
-  @media (max-width: 480px) {
-    .hero { padding: 0 16px; }
+  @media (max-width: 900px) {
+    .m-top { padding-top: var(--s4); }
+    .m-top svg { height: 26px; }
+    .m-main { grid-template-columns: minmax(0, 1fr); gap: var(--s5); padding-top: var(--s4); align-items: start; }
     /* QR visitors are on phones: keep the top of the form on the first screen. */
-    .hero img { aspect-ratio: auto; height: 40svh; }
-    header { padding: 14px 24px; }
-    main { padding-top: 20px; }
-    .eyebrow { margin-bottom: 10px; }
-    h1 { margin-bottom: 12px; }
-    .lede { font-size: 16px; margin-bottom: 20px; }
+    .m-plate .tg-plate { aspect-ratio: auto; height: 34svh; border-radius: 22px; }
+    .m-plate figcaption { display: none; }
+    .m-ask .tg-h1 { font-size: 40px; margin-top: var(--s3); }
+    .m-ask .tg-lede { font-size: 17px; margin-top: var(--s3); }
+    .m-note { margin-top: var(--s5); }
+    .m-slot { max-width: none; }
+    #waitlist .formkit-fields { flex-direction: column; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">🍊 Tangerines</div>
-</header>
+<header class="m-top" role="img" aria-label="Tangerines"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1660 8593 2130" aria-hidden="true" focusable="false"><path fill="currentColor" d="M58-720L34-729Q7-742 0-762Q-7-782-7-810Q-7-845 17.5-868Q42-891 81-891L104-891Q120-891 135.5-903.5Q151-916 176-952L248-1055Q277-1093 306-1113Q335-1133 367-1133Q401-1133 421-1111.5Q441-1090 441-1046L441-352Q441-292 461-263Q481-234 524-234Q550-234 568.5-246Q587-258 602.5-273Q618-288 632-300Q646-312 661-312Q678-312 687-297.5Q696-283 696-247Q696-178 655-117Q614-56 544.5-18Q475 20 388 20Q240 20 167-54.5Q94-129 94-291L94-641Q94-673 88.5-690.5Q83-708 58-720M536-717L320-717L320-891L626-891Q663-891 683-874.5Q703-858 703-826Q703-780 664-748.5Q625-717 536-717M1207-153L1207-180L1175-183L1175-694Q1175-736 1156.5-759.5Q1138-783 1103-783Q1077-783 1058.5-769.5Q1040-756 1040-733L1040-687Q1040-611 995-571Q950-531 865-531Q785-531 748-566Q711-601 711-661Q711-725 762-782.5Q813-840 915-875.5Q1017-911 1168-911Q1353-911 1437.5-841Q1522-771 1522-647L1522-242Q1522-227 1529-215Q1536-203 1555-203Q1565-203 1572-206.5Q1579-210 1585-215Q1590-218 1596-221Q1602-224 1610-224Q1629-224 1639.5-206.5Q1650-189 1650-166Q1650-122 1622.5-79Q1595-36 1545-8Q1495 20 1426 20Q1332 20 1269.5-28.5Q1207-77 1207-153M680-206Q680-340 788.5-414.5Q897-489 1086-489Q1129-489 1167.5-483.5Q1206-478 1230-468L1197-361Q1177-373 1160-377.5Q1143-382 1121-382Q1078-382 1052.5-353.5Q1027-325 1027-276Q1027-228 1052-201Q1077-174 1120-174Q1150-174 1174-186.5Q1198-199 1210-216L1232-114Q1193-51 1114-15.5Q1035 20 943 20Q820 20 750-43Q680-106 680-206M2045-832L2045-250Q2045-201 2050-181.5Q2055-162 2069-152L2085-141Q2116-115 2116-75Q2116 0 2047 0L1696 0Q1660 0 1639-20Q1618-40 1618-75Q1618-102 1628.5-119Q1639-136 1659-152L1674-161Q1687-169 1693-186Q1699-203 1699-250L1699-575Q1699-612 1691.5-627.5Q1684-643 1666-653L1650-658Q1626-672 1616.5-687Q1607-702 1607-726Q1607-753 1623-772.5Q1639-792 1679-808L1850-877Q1898-896 1925-903Q1952-910 1975-910Q2010-910 2027.5-888.5Q2045-867 2045-832M2044-605L2015-577L1952-653L1992-694Q2106-814 2191.5-862.5Q2277-911 2360-911Q2468-911 2519-847.5Q2570-784 2582-669L2627-250Q2632-204 2636-187Q2640-170 2652-161L2667-152Q2686-135 2697.5-118.5Q2709-102 2709-75Q2709-40 2688-20Q2667 0 2632 0L2278 0Q2208 0 2208-75Q2208-116 2241-141L2257-152Q2270-162 2277.5-179.5Q2285-197 2280-241L2244-535Q2237-597 2216.5-627.5Q2196-658 2152-658Q2126-658 2100-645.5Q2074-633 2044-605M3293-125Q3192-138 3145-148Q3098-158 3084.5-168Q3071-178 3071-189Q3071-198 3077.5-207Q3084-216 3099-224L3091-241Q2969-241 2897-211.5Q2825-182 2794-136Q2763-90 2763-38Q2763 10 2791.5 51Q2820 92 2892.5 122Q2965 152 3097 166Q3211 179 3268.5 193.5Q3326 208 3345.5 225Q3365 242 3365 264Q3365 282 3348.5 296.5Q3332 311 3289 319Q3246 327 3166 327Q3027 327 2980 299Q2933 271 2933 227Q2933 202 2943 181Q2953 160 2978 139L2939 112Q2792 123 2726.5 173.5Q2661 224 2661 299Q2661 361 2706.5 404Q2752 447 2851 468.5Q2950 490 3109 490Q3397 490 3530.5 404.5Q3664 319 3664 158Q3664 74 3629 17.5Q3594-39 3513-73.5Q3432-108 3293-125M3294-899L3264-821L3359-808Q3382-870 3401.5-891Q3421-912 3445-912Q3468-912 3484.5-899.5Q3501-887 3516.5-871.5Q3532-856 3552.5-843.5Q3573-831 3604-831Q3655-831 3685.5-871.5Q3716-912 3716-981Q3716-1056 3677.5-1095Q3639-1134 3570-1134Q3484-1134 3412.5-1077.5Q3341-1021 3294-899M3591-570Q3591-662 3541.5-739Q3492-816 3395-863.5Q3298-911 3156-911Q3008-911 2902.5-865.5Q2797-820 2741-737.5Q2685-655 2685-543Q2685-448 2738.5-373Q2792-298 2895.5-255.5Q2999-213 3150-213Q3283-213 3381.5-257.5Q3480-302 3535.5-382Q3591-462 3591-570M3091-777Q3133-784 3174-737.5Q3215-691 3239-580Q3263-469 3245-411.5Q3227-354 3185-346Q3157-342 3129-360.5Q3101-379 3077-424.5Q3053-470 3037-543Q3021-618 3024.5-667.5Q3028-717 3046-745Q3064-773 3091-777M4511-573Q4511-494 4469.5-451Q4428-408 4353-408L3861-408L3861-532L4102-532Q4159-532 4159-592Q4159-668 4130.5-703.5Q4102-739 4061-739Q4029-739 4002.5-719Q3976-699 3960-656Q3944-613 3944-544Q3944-386 4013-308.5Q4082-231 4197-231Q4254-231 4308.5-252.5Q4363-274 4404-313Q4426-332 4441-339.5Q4456-347 4468-347Q4485-347 4496-333.5Q4507-320 4507-290Q4506-210 4456-139Q4406-68 4314-24Q4222 20 4097 20Q3955 20 3850.5-37Q3746-94 3688-197Q3630-300 3630-437Q3630-572 3685-679.5Q3740-787 3847-849Q3954-911 4110-911Q4235-911 4324.5-865.5Q4414-820 4462.5-743Q4511-666 4511-573M4945-510L4907-486Q4907-634 4941-728Q4975-822 5033-866.5Q5091-911 5166-911Q5253-911 5301-853Q5349-795 5349-679Q5349-568 5307-515.5Q5265-463 5197-463Q5124-463 5088-496.5Q5052-530 5052-590L5052-629Q5052-655 5043-667Q5034-679 5016-679Q4996-679 4979.5-660Q4963-641 4954-603.5Q4945-566 4945-510M4925-821L4945-637L4945-250Q4945-208 4956-187Q4967-166 4994-161L5050-152Q5082-146 5097.5-125Q5113-104 5113-75Q5113-41 5092.5-20.5Q5072 0 5032 0L4596 0Q4560 0 4539-20Q4518-40 4518-75Q4518-102 4528.5-119Q4539-136 4559-152L4574-161Q4587-170 4593-186.5Q4599-203 4599-250L4599-575Q4599-612 4591.5-627.5Q4584-643 4566-653L4550-658Q4526-672 4516.5-687Q4507-702 4507-726Q4507-753 4523.5-772.5Q4540-792 4579-808L4758-880Q4797-896 4823.5-903Q4850-910 4867-910Q4891-910 4904.5-892Q4918-874 4925-821M5760-833L5760-250Q5760-204 5766.5-187Q5773-170 5785-161L5799-152Q5819-136 5830-119Q5841-102 5841-75Q5841-40 5820-20Q5799 0 5763 0L5411 0Q5375 0 5354-20Q5333-40 5333-75Q5333-102 5343.5-119Q5354-136 5375-152L5389-161Q5401-170 5407.5-187Q5414-204 5414-250L5414-575Q5414-612 5406-627.5Q5398-643 5381-653L5365-658Q5342-672 5332-687.5Q5322-703 5322-726Q5322-753 5338-772.5Q5354-792 5394-808L5565-877Q5612-896 5640-903.5Q5668-911 5690-911Q5725-911 5742.5-889.5Q5760-868 5760-833M6259-832L6259-250Q6259-201 6264-181.5Q6269-162 6283-152L6299-141Q6330-115 6330-75Q6330 0 6261 0L5910 0Q5874 0 5853-20Q5832-40 5832-75Q5832-102 5842.5-119Q5853-136 5873-152L5888-161Q5901-169 5907-186Q5913-203 5913-250L5913-575Q5913-612 5905.5-627.5Q5898-643 5880-653L5864-658Q5840-672 5830.5-687Q5821-702 5821-726Q5821-753 5837-772.5Q5853-792 5893-808L6064-877Q6112-896 6139-903Q6166-910 6189-910Q6224-910 6241.5-888.5Q6259-867 6259-832M6258-605L6229-577L6166-653L6206-694Q6320-814 6405.5-862.5Q6491-911 6574-911Q6682-911 6733-847.5Q6784-784 6796-669L6841-250Q6846-204 6850-187Q6854-170 6866-161L6881-152Q6900-135 6911.5-118.5Q6923-102 6923-75Q6923-40 6902-20Q6881 0 6846 0L6492 0Q6422 0 6422-75Q6422-116 6455-141L6471-152Q6484-162 6491.5-179.5Q6499-197 6494-241L6458-535Q6451-597 6430.5-627.5Q6410-658 6366-658Q6340-658 6314-645.5Q6288-633 6258-605M7780-573Q7780-494 7738.5-451Q7697-408 7622-408L7130-408L7130-532L7371-532Q7428-532 7428-592Q7428-668 7399.5-703.5Q7371-739 7330-739Q7298-739 7271.5-719Q7245-699 7229-656Q7213-613 7213-544Q7213-386 7282-308.5Q7351-231 7466-231Q7523-231 7577.5-252.5Q7632-274 7673-313Q7695-332 7710-339.5Q7725-347 7737-347Q7754-347 7765-333.5Q7776-320 7776-290Q7775-210 7725-139Q7675-68 7583-24Q7491 20 7366 20Q7224 20 7119.5-37Q7015-94 6957-197Q6899-300 6899-437Q6899-572 6954-679.5Q7009-787 7116-849Q7223-911 7379-911Q7504-911 7593.5-865.5Q7683-820 7731.5-743Q7780-666 7780-573M8167-116Q8215-116 8237.5-136Q8260-156 8260-182Q8260-200 8252-214.5Q8244-229 8221-242Q8198-255 8153-267Q8002-308 7918.5-353.5Q7835-399 7802.5-460Q7770-521 7770-607Q7770-742 7862-826.5Q7954-911 8144-911Q8201-911 8239.5-900.5Q8278-890 8305-879.5Q8332-869 8353-869Q8371-869 8384-879.5Q8397-890 8411.5-900.5Q8426-911 8448-911Q8473-911 8492-895Q8511-879 8524-832L8548-741Q8564-681 8556.5-639.5Q8549-598 8514-584Q8477-569 8442-583Q8407-597 8379-634Q8343-686 8308.5-716Q8274-746 8239.5-758.5Q8205-771 8169-771Q8117-771 8093-748.5Q8069-726 8069-697Q8069-675 8081-657Q8093-639 8126.5-623.5Q8160-608 8221-594Q8327-570 8402-530Q8477-490 8517.5-428Q8558-366 8558-276Q8558-184 8511-116.5Q8464-49 8380-12Q8296 25 8186 25Q8119 25 8082 14.5Q8045 4 8026-7Q8007-18 7992-18Q7976-18 7963-7Q7950 4 7935.5 14.5Q7921 25 7900 25Q7875 25 7860.5 9Q7846-7 7838-48L7817-161Q7806-224 7814-259Q7822-294 7860-303Q7895-312 7927.5-296Q7960-280 7991-235Q8039-166 8076.5-141Q8114-116 8167-116"/><path fill="#F26A21" d="M5591.5 -1330.9 Q5594.2 -1345.9 5623.8 -1347.0 C5720.5 -1347.0 5806.5 -1266.4 5806.5 -1169.6 C5806.5 -1067.5 5709.8 -992.3 5591.5 -992.3 C5473.3 -992.3 5376.5 -1067.5 5376.5 -1169.6 C5376.5 -1266.4 5462.5 -1347.0 5559.3 -1347.0 Q5588.8 -1345.9 5591.5 -1330.9Z"/><path style="fill:var(--mark-leaf, currentColor)" d="M5594.2 -1336.3 C5607.6 -1406.1 5672.1 -1454.5 5758.1 -1459.9 C5747.4 -1390.0 5688.3 -1336.3 5594.2 -1336.3Z"/></svg></header>
 
-<figure class="hero">
-  <img src="images/hero-copper.jpg"
-       srcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w"
-       sizes="(max-width: 1100px) 100vw, 1100px"
-       width="1920" height="1080"
-       alt="A Tangerines figure rendered in copper: a curly-haired kid in a hoodie and joggers, one hand in a pocket, waving, on a round base.">
-  <figcaption>Shown here in copper. The finished figures are painted by hand.</figcaption>
-</figure>
+<main class="m-main">
+  <figure class="m-plate">
+    <div class="tg-plate">
+      <img src="images/hero-copper.jpg"
+           srcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w"
+           sizes="(max-width: 900px) 100vw, 60vw"
+           width="1920" height="1080"
+           alt="A Tangerines figure rendered in copper: a curly-haired kid in a hoodie and joggers, one hand in a pocket, waving, on a round base.">
+    </div>
+    <figcaption class="tg-cap">Shown here in copper. The finished figures are painted by hand.</figcaption>
+  </figure>
 
-<main>
-  <div class="eyebrow">Art Blocks · Marfa · Oct 22–25</div>
-  <h1>A first look at <em>Tangerines.</em></h1>
-  <p class="lede">Generative sculptures by Dorian Collier, 3D-printed and finished by hand.</p>
+  <div class="m-ask">
+    <p class="tg-label">Art Blocks · Marfa · Oct 22–25</p>
+    <h1 class="tg-h1">A first look at <em>Tangerines.</em></h1>
+    <p class="tg-lede">Generative sculptures by Dorian Collier, 3D&#8209;printed and finished by hand.</p>
 
-  <p class="preview-note">This is a preview. Nothing is for sale yet.</p>
-  <div class="form-slot" id="waitlist">
-    <!-- KIT EMBED GOES HERE (D-007). Keep the hidden field named "src" (D-008).
-         Button label: "Tell me first" (not Kit's default "Subscribe").
-         Input: dark, orange only on the button, 44px min height, type="email" autocomplete="email". -->
-    <p class="form-placeholder">[ Waitlist form goes here ]</p>
+    <p class="m-note">This is a preview. Nothing is for sale yet.</p>
+    <div class="m-slot" id="waitlist">
+      <!-- Kit embed goes here. Keep its hidden field named "src".
+           Button label: "Tell me first". Input: type="email" autocomplete="email". -->
+      <p class="m-slot-empty">[ Waitlist form goes here ]</p>
+    </div>
+    <p class="tg-small">Leave your email to hear first when the collection opens. We won't use it for anything else.</p>
   </div>
-  <p class="fine">Leave your email to hear first when the collection opens. We won't use it for anything else.</p>
 </main>
 
-<footer>Tangerines · Dorian Collier · 2026</footer>
+<footer class="m-foot"><span class="tg-small">Tangerines · Dorian Collier · 2026</span></footer>
 
 <script>
-  // D-008: the QR opens /marfa/?s=qr. Copy the source into the Kit form's
-  // hidden "src" field so QR signups can be counted apart from everything else.
-  // Runs again after the embed loads, in case Kit renders the form late.
+  // The QR opens /marfa/?s=qr. Copy the source into the form's hidden "src"
+  // field so QR signups can be counted apart from everything else.
+  // Runs again after the embed loads, in case the form renders late.
   (function () {
     var src = new URLSearchParams(location.search).get('s');
     if (!src) return;
