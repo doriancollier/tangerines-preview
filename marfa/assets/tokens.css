@@ -1,0 +1,71 @@
+/* Tangerines brand tokens, v0.1. Light is the default ("porcelain"); dark ("vitrine") follows the system,
+   or force it with <html data-theme="dark">. Every text pair here is AA or better. */
+
+@font-face { font-family: "Fraunces"; src: url(fonts/fraunces-latin-full-normal.woff2) format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url(fonts/fraunces-latin-full-italic.woff2) format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url(fonts/instrument-sans-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url(fonts/instrument-sans-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+
+:root {
+  /* raw palette */
+  --t-porcelain: #F5F0E8;   /* the clothes: page, light */
+  --t-bisque:    #ECE5DA;   /* tint surface on porcelain */
+  --t-ink:       #1C1714;   /* warm near-black: text, dark page */
+  --t-char:      #241E1A;   /* tint surface on ink */
+  --t-copper-deep:  #8E4B2B; /* copper as text on light (5.8:1) */
+  --t-copper-light: #E09A6F; /* copper as text on dark (8.0:1) */
+  --t-tangerine: #F26A21;   /* the fruit. Logo mark + one highlight per view. Never text on light. */
+
+  /* roles, light */
+  --bg: var(--t-porcelain);
+  --surface: var(--t-bisque);
+  --text: var(--t-ink);
+  --text-muted: #6B6158;    /* 5.3:1 on porcelain */
+  --accent: var(--t-copper-deep);
+  --mark-leaf: var(--t-ink);
+  --btn-bg: var(--t-ink);
+  --btn-text: var(--t-porcelain);
+  --focus: var(--t-copper-deep);
+  --vitrine: #1F1A17;       /* dark band the metal twins sit on, in both themes */
+  --vitrine-text: #F2ECE3;
+  --vitrine-muted: #B3A79C;
+
+  /* type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --display-axes: "SOFT" 100, "WONK" 0;     /* soft terminals everywhere, matches the wordmark */
+  --fs-label: 12px; --fs-small: 14px; --fs-body: 17px; --fs-lede: 21px;
+  --fs-h3: 28px; --fs-h2: clamp(32px, 4.4vw, 52px); --fs-h1: clamp(44px, 7vw, 92px);
+
+  /* space (4px base) */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 136px;
+  --page-max: 1240px; --gutter: clamp(20px, 4vw, 48px);
+
+  /* shape */
+  --r-control: 999px;  /* buttons and inputs are pills: round like the figures */
+  --r-card: 16px;
+  --r-plate: 28px;     /* image plates */
+
+  /* motion */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-in: cubic-bezier(.4, 0, 1, 1);
+  --t-fast: 150ms; --t-normal: 200ms; --t-slow: 300ms;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: var(--t-ink); --surface: var(--t-char); --text: #F2ECE3; --text-muted: #B3A79C;
+    --accent: var(--t-copper-light); --mark-leaf: #F2ECE3; --btn-bg: #F2ECE3; --btn-text: var(--t-ink);
+    --focus: var(--t-copper-light); --vitrine: #141110;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: var(--t-ink); --surface: var(--t-char); --text: #F2ECE3; --text-muted: #B3A79C;
+  --accent: var(--t-copper-light); --mark-leaf: #F2ECE3; --btn-bg: #F2ECE3; --btn-text: var(--t-ink);
+  --focus: var(--t-copper-light); --vitrine: #141110;
+}
+
+/* Phone reading floor for labels (v1.0.1). */
+@media (max-width: 600px) { :root { --fs-label: 13px; } }
