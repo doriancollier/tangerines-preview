@@ -53,7 +53,7 @@
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border: 1px solid var(--copper-border);
+    border-radius: 8px;
   }
   .hero figcaption {
     margin-top: 10px;
@@ -95,7 +95,7 @@
   .preview-note {
     font-size: 13px;
     letter-spacing: 0.04em;
-    color: var(--text);
+    color: var(--text-dim);
     margin-bottom: 14px;
   }
   .form-slot {
@@ -126,10 +126,14 @@
   }
 
   @media (max-width: 480px) {
-    .hero { padding: 0; }
-    .hero img { aspect-ratio: 4 / 3; border-left: 0; border-right: 0; }
-    main { padding-top: 36px; }
-    .lede { font-size: 16px; }
+    .hero { padding: 0 16px; }
+    /* QR visitors are on phones: keep the top of the form on the first screen. */
+    .hero img { aspect-ratio: auto; height: 40svh; }
+    header { padding: 14px 24px; }
+    main { padding-top: 20px; }
+    .eyebrow { margin-bottom: 10px; }
+    h1 { margin-bottom: 12px; }
+    .lede { font-size: 16px; margin-bottom: 20px; }
   }
 </style>
 </head>
@@ -145,13 +149,13 @@
        sizes="(max-width: 1100px) 100vw, 1100px"
        width="1920" height="1080"
        alt="A Tangerines figure rendered in copper: a curly-haired kid in a hoodie and joggers, one hand in a pocket, waving, on a round base.">
-  <figcaption>The copper twin: the same figure, rendered as a single metal cast.</figcaption>
+  <figcaption>Shown here in copper. The finished figures are painted by hand.</figcaption>
 </figure>
 
 <main>
   <div class="eyebrow">Art Blocks · Marfa · Oct 22–25</div>
   <h1>A first look at <em>Tangerines.</em></h1>
-  <p class="lede">Generative sculptures by Dorian Collier: each figure is printed in three dimensions, then finished by hand.</p>
+  <p class="lede">Generative sculptures by Dorian Collier, 3D-printed and finished by hand.</p>
 
   <p class="preview-note">This is a preview. Nothing is for sale yet.</p>
   <div class="form-slot" id="waitlist">
