@@ -4,7 +4,7 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 400 var(--fs-body)/1.55 var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 img, video { display: block; max-width: 100%; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
 .tg-wrap { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); }
 

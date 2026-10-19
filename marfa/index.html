@@ -55,6 +55,14 @@
     .m-slot { max-width: none; }
     #waitlist .formkit-fields { flex-direction: column; }
   }
+  /* Short phones (iPhone SE and smaller): keep the button on the first screen. */
+  @media (max-width: 900px) and (max-height: 700px) {
+    .m-top { padding-top: var(--s3); }
+    .m-plate .tg-plate { height: 26svh; }
+    .m-ask .tg-h1 { font-size: 34px; }
+    .m-ask .tg-lede { font-size: 16px; }
+    .m-note { margin-top: var(--s4); font-size: 14px; }
+  }
 </style>
 </head>
 <body>
