@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tangerines · Marfa preview</title>
+<meta name="description" content="A first look at Tangerines, generative sculptures by Dorian Collier. Preview only, nothing is for sale yet. Join the list to hear first.">
+<link rel="preload" as="image" href="images/hero-copper.jpg" imagesrcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w" imagesizes="(max-width: 1100px) 100vw, 1100px">
+<style>
+  :root {
+    --copper: #C8893A;
+    --copper-bright: #E8A84C;
+    --copper-border: rgba(200, 137, 58, 0.25);
+    --bg: #080807;
+    --bg2: #0e0d0b;
+    --text: #EDE8E0;
+    --text-dim: #8A8070;
+    --serif: 'Georgia', 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; display: block; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    color: var(--copper);
+    font-style: italic;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .hero img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid var(--copper-border);
+  }
+  .hero figcaption {
+    margin-top: 10px;
+    padding: 0 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 8vw, 56px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  h1 em { color: var(--copper-bright); font-style: italic; }
+  .lede {
+    font-size: 17px;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+  }
+
+  /* One action: the list. "Preview, no sales" sits right above it. */
+  .preview-note {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .form-slot {
+    min-height: 120px;
+    padding: 20px;
+    background: var(--bg2);
+    border: 1px solid var(--copper-border);
+  }
+  /* Placeholder until the Kit embed is pasted in. Remove with it. */
+  .form-placeholder {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .fine {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  footer {
+    padding: 24px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    border-top: 1px solid var(--copper-border);
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 0; }
+    .hero img { aspect-ratio: 4 / 3; border-left: 0; border-right: 0; }
+    main { padding-top: 36px; }
+    .lede { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍊 Tangerines</div>
+</header>
+
+<figure class="hero">
+  <img src="images/hero-copper.jpg"
+       srcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w"
+       sizes="(max-width: 1100px) 100vw, 1100px"
+       width="1920" height="1080"
+       alt="A Tangerines figure rendered in copper: a curly-haired kid in a hoodie and joggers, one hand in a pocket, waving, on a round base.">
+  <figcaption>The copper twin: the same figure, rendered as a single metal cast.</figcaption>
+</figure>
+
+<main>
+  <div class="eyebrow">Art Blocks · Marfa · Oct 22–25</div>
+  <h1>A first look at <em>Tangerines.</em></h1>
+  <p class="lede">Generative sculptures by Dorian Collier: each figure is printed in three dimensions, then finished by hand.</p>
+
+  <p class="preview-note">This is a preview. Nothing is for sale yet.</p>
+  <div class="form-slot" id="waitlist">
+    <!-- KIT EMBED GOES HERE (D-007). Keep the hidden field named "src" (D-008). -->
+    <p class="form-placeholder">[ Waitlist form goes here ]</p>
+  </div>
+  <p class="fine">Leave your email and you'll hear first when the collection opens. That's all we'll use it for.</p>
+</main>
+
+<footer>Tangerines · Dorian Collier · 2026</footer>
+
+<script>
+  // D-008: the QR opens /marfa/?s=qr. Copy the source into the Kit form's
+  // hidden "src" field so QR signups can be counted apart from everything else.
+  // Runs again after the embed loads, in case Kit renders the form late.
+  (function () {
+    var src = new URLSearchParams(location.search).get('s');
+    if (!src) return;
+    function fill() {
+      var inputs = document.querySelectorAll('#waitlist input[name="src"], #waitlist input[name="fields[src]"]');
+      inputs.forEach(function (el) { el.value = src; });
+      return inputs.length > 0;
+    }
+    if (!fill()) {
+      var tries = 0;
+      var t = setInterval(function () { if (fill() || ++tries > 40) clearInterval(t); }, 250);
+    }
+  })();
+</script>
+
+</body>
+</html>
