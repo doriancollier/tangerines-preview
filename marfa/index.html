@@ -56,6 +56,7 @@
     border-radius: 8px;
   }
   .hero figcaption {
+    text-wrap: balance;
     margin-top: 10px;
     padding: 0 16px;
     font-size: 12px;
@@ -87,6 +88,7 @@
   h1 em { color: var(--copper-bright); font-style: italic; }
   .lede {
     font-size: 17px;
+    text-wrap: balance;
     color: var(--text-dim);
     margin-bottom: 36px;
   }
@@ -159,10 +161,12 @@
 
   <p class="preview-note">This is a preview. Nothing is for sale yet.</p>
   <div class="form-slot" id="waitlist">
-    <!-- KIT EMBED GOES HERE (D-007). Keep the hidden field named "src" (D-008). -->
+    <!-- KIT EMBED GOES HERE (D-007). Keep the hidden field named "src" (D-008).
+         Button label: "Tell me first" (not Kit's default "Subscribe").
+         Input: dark, orange only on the button, 44px min height, type="email" autocomplete="email". -->
     <p class="form-placeholder">[ Waitlist form goes here ]</p>
   </div>
-  <p class="fine">Leave your email and you'll hear first when the collection opens. That's all we'll use it for.</p>
+  <p class="fine">Leave your email to hear first when the collection opens. We won't use it for anything else.</p>
 </main>
 
 <footer>Tangerines · Dorian Collier · 2026</footer>
