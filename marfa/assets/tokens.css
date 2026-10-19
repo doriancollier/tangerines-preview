@@ -66,3 +66,6 @@
   --accent: var(--t-copper-light); --mark-leaf: #F2ECE3; --btn-bg: #F2ECE3; --btn-text: var(--t-ink);
   --focus: var(--t-copper-light); --vitrine: #141110;
 }
+
+/* Phone reading floor for labels (v1.0.1). */
+@media (max-width: 600px) { :root { --fs-label: 13px; } }
