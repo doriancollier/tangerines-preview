@@ -16,7 +16,7 @@
   /* One screen, one action. Desktop: plate left, the ask right. Phone: plate, then the ask, form on the first screen. */
   body { min-height: 100svh; display: flex; flex-direction: column; }
   .m-top { display: flex; justify-content: center; padding: var(--s5) var(--gutter) 0; color: var(--text); }
-  .m-top svg { height: 30px; width: auto; display: block; }
+  .m-top svg { height: 36px; width: auto; display: block; }
   .m-main { flex: 1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s8); align-items: center; max-width: var(--page-max); width: 100%; margin: 0 auto; padding: var(--s6) var(--gutter) var(--s7); }
   .m-plate { margin: 0; }
   .m-plate .tg-plate { aspect-ratio: 4 / 3; background: #F5F0E8; }
@@ -37,7 +37,7 @@
 
   @media (max-width: 900px) {
     .m-top { padding-top: var(--s4); }
-    .m-top svg { height: 26px; }
+    .m-top svg { height: 31px; }
     .m-main { grid-template-columns: minmax(0, 1fr); gap: var(--s5); padding-top: var(--s4); align-items: start; }
     /* QR visitors are on phones: keep the top of the form on the first screen. */
     .m-plate .tg-plate { aspect-ratio: auto; height: 34svh; border-radius: 22px; }
