@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#1C1714" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-latin-full-normal.woff2" crossorigin>
-<link rel="preload" as="image" href="images/hero-copper.jpg" imagesrcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w" imagesizes="(max-width: 900px) 100vw, 60vw">
+<link rel="preload" as="image" href="images/hero-painted.jpg">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/site.css">
 <style>
@@ -20,7 +20,7 @@
   .m-main { flex: 1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s8); align-items: center; max-width: var(--page-max); width: 100%; margin: 0 auto; padding: var(--s6) var(--gutter) var(--s7); }
   .m-plate { margin: 0; }
   .m-plate .tg-plate { aspect-ratio: 4 / 3; background: #3C3D40; }
-  .m-plate img { object-position: 50% 62%; transform: scale(1.25); transform-origin: 50% 60%; }
+  .m-plate img { object-position: 50% 28%; }
   .m-ask .tg-h1 { font-size: clamp(40px, 5.4vw, 72px); margin-top: var(--s4); }
   .m-ask .tg-lede { margin-top: var(--s4); font-size: 19px; }
   .m-note { display: inline-flex; align-items: center; gap: 10px; margin: var(--s7) 0 var(--s3); font: 500 15px/1.3 var(--font-body); color: var(--text); }
@@ -48,7 +48,6 @@
     .m-main { grid-template-columns: minmax(0, 1fr); gap: var(--s5); padding-top: var(--s4); align-items: start; }
     /* QR visitors are on phones: keep the top of the form on the first screen. */
     .m-plate .tg-plate { aspect-ratio: auto; height: 34svh; border-radius: 22px; }
-    .m-plate figcaption { display: none; }
     .m-ask .tg-h1 { font-size: 40px; margin-top: var(--s3); }
     .m-ask .tg-lede { font-size: 17px; margin-top: var(--s3); }
     .m-note { margin-top: var(--s5); }
@@ -72,13 +71,10 @@
 <main class="m-main">
   <figure class="m-plate">
     <div class="tg-plate">
-      <img src="images/hero-copper.jpg"
-           srcset="images/hero-copper-960.jpg 960w, images/hero-copper.jpg 1920w"
-           sizes="(max-width: 900px) 100vw, 60vw"
-           width="1920" height="1080"
-           alt="A Tangerines figure rendered in copper: a curly-haired kid in a hoodie and joggers, one hand in a pocket, waving.">
+      <img src="images/hero-painted.jpg"
+           width="900" height="1221"
+           alt="A painted Tangerines figure: a curly-haired kid in a white hoodie and green joggers, glossy copper paint on the skin and hair, mid-step.">
     </div>
-    <figcaption class="tg-cap">Shown in copper. The finished figures are painted by hand.</figcaption>
   </figure>
 
   <div class="m-ask">
