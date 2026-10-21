@@ -30,19 +30,10 @@
   .m-abx svg { height: 20px; width: auto; display: block; }
   .m-foot { display: flex; justify-content: center; align-items: center; gap: var(--s4); flex-wrap: wrap; text-align: center; padding: var(--s5) var(--gutter) calc(var(--s5) + env(safe-area-inset-bottom)); }
 
-  /* The waitlist form slot. The Kit embed goes inside #waitlist; these rules give
-     Kit's input and button the brand look (pill input, ink button). */
+  /* The waitlist form: a plain HTML post to Kit, no third-party script. */
   .m-slot { max-width: 460px; }
-  .m-slot-empty { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: var(--r-control); background: var(--surface); color: var(--text-muted); font-size: var(--fs-small); font-style: italic; }
-  #waitlist .formkit-form { max-width: none !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
-  #waitlist .formkit-fields { display: flex; gap: var(--s2); margin: 0 !important; }
-  #waitlist .formkit-field { flex: 1; min-width: 0; margin: 0 !important; }
-  #waitlist .formkit-input { width: 100%; min-height: 48px; padding: 0 20px !important; border: 0 !important; border-radius: var(--r-control) !important; background: var(--surface) !important; color: var(--text) !important; font: 400 16px/1 var(--font-body) !important; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--text) 14%, transparent); }
-  #waitlist .formkit-input::placeholder { color: var(--text-muted) !important; }
-  #waitlist .formkit-input:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--focus); }
-  #waitlist .formkit-submit { flex: none; min-height: 48px; margin: 0 !important; padding: 0 26px !important; border: 0 !important; border-radius: var(--r-control) !important; background: var(--btn-bg) !important; color: var(--btn-text) !important; font: 500 16px/1 var(--font-body) !important; cursor: pointer; }
-  #waitlist .formkit-submit > span { padding: 0 !important; }
-  #waitlist .formkit-powered-by-convertkit-container { display: none !important; }
+  .m-form { display: flex; gap: var(--s2); }
+  .m-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   @media (max-width: 900px) {
     .m-top { padding-top: var(--s4); }
@@ -54,7 +45,7 @@
     .m-ask .tg-lede { font-size: 17px; margin-top: var(--s3); }
     .m-note { margin-top: var(--s5); }
     .m-slot { max-width: none; }
-    #waitlist .formkit-fields { flex-direction: column; }
+    .m-form { flex-direction: column; }
   }
   /* Short phones (iPhone SE and smaller): keep the button on the first screen. */
   @media (max-width: 900px) and (max-height: 700px) {
@@ -85,11 +76,12 @@
     <p class="tg-lede">Generative statues by Dorian Collier, 3D&#8209;printed and painted by hand.</p>
 
     <p class="m-note">This is a preview. Nothing is for sale yet.</p>
-    <div class="m-slot" id="waitlist">
-      <!-- Kit embed goes here. Keep its hidden field named "src".
-           Button label: "Tell me first". Input: type="email" autocomplete="email". -->
-      <p class="m-slot-empty">Waitlist opens soon.</p>
-    </div>
+    <form class="m-slot m-form" id="waitlist" action="https://app.kit.com/forms/10078879/subscriptions" method="post">
+      <label class="m-sr" for="wl-email">Email</label>
+      <input class="tg-input" id="wl-email" name="email_address" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+      <input type="hidden" name="fields[src]" value="">
+      <button class="tg-btn" type="submit">Join the list</button>
+    </form>
     <p class="tg-small">One email when Tangerines launch. Nothing else.</p>
     <a class="m-abx" href="https://abx.io" rel="noopener" aria-label="Powered by ABX"><span aria-hidden="true">Powered by</span><svg viewBox="0 0 92 48" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M58.5614 48C59.7594 48 60.8789 47.4153 61.5477 46.4403L71.3274 32.1819C72.7527 30.1038 75.8699 30.102 77.2977 32.1786L87.4347 46.9217C87.8982 47.5959 88.6731 48 89.5021 48C91.5066 48 92.6918 45.798 91.5612 44.1746L78.688 25.6918C77.8515 24.4908 77.8517 22.9094 78.6886 21.7085L91.1383 3.84458C92.2751 2.21338 91.0842 0 89.0696 0C88.235 0 87.4551 0.407641 86.9896 1.08721L77.2976 15.2379C75.8715 17.3201 72.7485 17.3201 71.3224 15.2379L61.9553 1.56161C61.2868 0.585518 60.1666 0 58.9677 0L18.4373 0C16.9013 0 15.5345 0.956067 15.0343 2.38046L0.135991 44.8037C-0.413816 46.3692 0.772022 48 2.46027 48C3.50924 48 4.44265 47.3472 4.78442 46.3745L7.46461 38.7466C7.96499 37.3225 9.33159 36.3667 10.8674 36.3667H27.4795C29.0127 36.3667 30.3776 37.3193 30.88 38.74L33.3152 45.6267C33.8176 47.0474 35.1825 48 36.7157 48H58.5614ZM36.8677 40.9195C37.3679 42.3439 38.7347 43.3 40.2707 43.3H51.3577C53.3515 43.3 55.1414 42.9556 56.7274 42.2667C56.8796 42.1984 57.0286 42.1275 57.1746 42.054C58.5494 41.361 59.6465 40.4319 60.4658 39.2667C61.1198 38.3592 61.5436 37.3196 61.7372 36.1478C61.8186 35.6552 61.8592 35.1393 61.8592 34.6C61.8592 32.8222 61.4401 31.2222 60.6018 29.8C59.7635 28.3778 58.6193 27.2444 57.1692 26.4C55.7418 25.5333 54.1105 25.1 52.2753 25.1H36.3586C33.8868 25.1 32.1506 27.4876 32.9556 29.7797L36.8677 40.9195ZM28.849 18.0862C29.3493 19.5106 30.716 20.4667 32.252 20.4667H44.639C46.2024 20.4667 47.6298 20.1222 48.9212 19.4333C50.2127 18.7222 51.2322 17.7556 51.9799 16.5333C52.7503 15.3111 53.1354 13.9 53.1354 12.3C53.1354 11.1174 52.9165 10.0498 52.4786 9.09705C52.0772 8.22367 51.4918 7.44688 50.7225 6.76666C50.4785 6.54792 50.2241 6.346 49.9593 6.1609C48.5022 5.14252 46.7288 4.63333 44.639 4.63333H29.171C26.6993 4.63333 24.9631 7.02091 25.768 9.31306L28.849 18.0862ZM23.3563 31.7667C25.8312 31.7667 27.5677 29.3733 26.7567 27.0798L22.5473 15.1762C21.4272 12.0084 16.858 12.0129 15.7442 15.1828L11.5616 27.0864C10.7562 29.3786 12.4924 31.7667 14.9644 31.7667H23.3563Z"/></svg></a>
   </div>
@@ -98,21 +90,12 @@
 <footer class="m-foot"><span class="tg-small">Tangerines · Dorian Collier · 2026</span></footer>
 
 <script>
-  // The QR opens /marfa/?s=qr. Copy the source into the form's hidden "src"
-  // field so QR signups can be counted apart from everything else.
-  // Runs again after the embed loads, in case the form renders late.
+  // The QR opens /marfa/?s=qr: copy the source into the hidden "src" field.
   (function () {
     var src = new URLSearchParams(location.search).get('s');
     if (!src) return;
-    function fill() {
-      var inputs = document.querySelectorAll('#waitlist input[name="src"], #waitlist input[name="fields[src]"]');
-      inputs.forEach(function (el) { el.value = src; });
-      return inputs.length > 0;
-    }
-    if (!fill()) {
-      var tries = 0;
-      var t = setInterval(function () { if (fill() || ++tries > 40) clearInterval(t); }, 250);
-    }
+    var el = document.querySelector('#waitlist input[name="fields[src]"]');
+    if (el) el.value = src;
   })();
 </script>
 
