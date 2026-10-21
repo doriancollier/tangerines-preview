@@ -1,8 +1,10 @@
 /* Tangerines brand tokens, v0.1. Light is the default ("porcelain"); dark ("vitrine") follows the system,
    or force it with <html data-theme="dark">. Every text pair here is AA or better. */
 
-@font-face { font-family: "Fraunces"; src: url(fonts/fraunces-latin-full-normal.woff2) format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Fraunces"; src: url(fonts/fraunces-latin-full-italic.woff2) format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(fonts/cormorant-garamond-latin-600-italic.woff2) format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
 @font-face { font-family: "Instrument Sans"; src: url(fonts/instrument-sans-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Instrument Sans"; src: url(fonts/instrument-sans-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
 
@@ -31,11 +33,11 @@
   --vitrine-muted: #B3A79C;
 
   /* type */
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --display-axes: "SOFT" 100, "WONK" 0;     /* soft terminals everywhere, matches the wordmark */
+  --display-axes: normal;
   --fs-label: 12px; --fs-small: 14px; --fs-body: 17px; --fs-lede: 21px;
-  --fs-h3: 28px; --fs-h2: clamp(32px, 4.4vw, 52px); --fs-h1: clamp(44px, 7vw, 92px);
+  --fs-h3: 22px; --fs-h2: clamp(37px, 5.1vw, 60px); --fs-h1: clamp(50px, 8vw, 106px);
 
   /* space (4px base) */
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 136px;
